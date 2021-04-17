@@ -21,7 +21,7 @@ struct ContentView: View {
                 .multilineTextAlignment(.center)
                 .lineSpacing(4.0)
                 .font(.footnote)
-            Text("89")
+            Text("\(self.game.target)")
                 .font(.largeTitle)
                 .fontWeight(.black)
                 .kerning(-1.0)
@@ -30,7 +30,7 @@ struct ContentView: View {
                     .font(.body)
                     .fontWeight(.bold)
                 Slider(value: self.$currentValue, in: 1.00...100.00)
-                Text("2")
+                Text("100")
                     .font(.body)
                     .fontWeight(.bold)
             }
