@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var isAlertOpened: Bool = false
     @State var currentValue: Double = 50.0
+    @State var game: Game = Game()
     
     
     var body: some View {
@@ -38,10 +39,15 @@ struct ContentView: View {
             }) {
                 Text("Hit me")
             }.alert(isPresented: $isAlertOpened, content: {
-                let roundedValue = Int(self.currentValue)
-               return Alert(
+                let value = self.currentValue.rounded()
+                let earnedPoints = self.game.points(value: Int(value))
+               
+                let valueText = "The slider's value is \(value)"
+                let pointsText = "You've earned \(earnedPoints)"
+                
+                return Alert(
                     title: Text("Score"),
-                message: Text("The slider's value is \(self.currentValue) rounded \(self.currentValue.rounded())"),
+                message: Text("\(valueText)\n\(pointsText)"),
                     dismissButton: .default(Text("Awesome!"))
                )
             })
