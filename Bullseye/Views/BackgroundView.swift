@@ -15,7 +15,9 @@ struct BackgroundView: View {
             TopView()
             Spacer()
             BottomView(game: $game)
-        }.padding()
+        }
+        .padding()
+        .background(Color("BackgroundColor").edgesIgnoringSafeArea(.all))
     }
 }
 
@@ -57,7 +59,7 @@ struct NumberView: View {
             Text(text)
                 .font(.title3)
                 .fontWeight(.bold)
-                .frame(width: 56.0, height: 56.0)
+                .frame(width: 68.0, height: 56.0)
                 .foregroundColor(Color("TextColor"))
                 .background(
                     RoundedRectangle(cornerRadius: 21.0)
