@@ -73,6 +73,7 @@ struct RoundedTextView: View {
     var body: some View {
         Text(text)
             .font(.title3)
+            .kerning(-0.2)
             .fontWeight(.bold)
             .frame(width: 68.0, height: 56.0)
             .foregroundColor(Color("TextColor"))
