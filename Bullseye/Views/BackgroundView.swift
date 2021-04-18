@@ -50,28 +50,47 @@ struct NumberView: View {
     
     var body: some View {
         VStack(spacing: 5.0) {
-            Text(title.uppercased())
-                .font(.caption2)
-                .fontWeight(.bold)
-                .kerning(1.5)
-                .foregroundColor(Color("TextColor"))
-            
-            Text(text)
-                .font(.title3)
-                .fontWeight(.bold)
-                .frame(width: 68.0, height: 56.0)
-                .foregroundColor(Color("TextColor"))
-                .background(
-                    RoundedRectangle(cornerRadius: 21.0)
-                        .strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2.0)
-                )
+            NumberViewLabel(text: title)
+            RoundedTextView(text: text)
         }
     }
 }
 
+struct NumberViewLabel: View {
+    var text: String
+    var body: some View {
+        Text(text.uppercased())
+            .font(.caption2)
+            .fontWeight(.bold)
+            .kerning(1.5)
+            .foregroundColor(Color("TextColor"))
+    }
+}
+
+struct RoundedTextView: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .font(.title3)
+            .fontWeight(.bold)
+            .frame(width: 68.0, height: 56.0)
+            .foregroundColor(Color("TextColor"))
+            .background(
+                RoundedRectangle(cornerRadius: 21.0)
+                    .strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2.0)
+            )
+    }
+}
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
+        VStack(spacing: 10) {
+            NumberViewLabel(text: "Label")
+            RoundedTextView(text: "100")
+            NumberView(title: "score", text: "999")
+        }
+        
         BackgroundView(game: .constant(Game()))
     }
 }

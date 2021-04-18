@@ -58,6 +58,7 @@ struct SliderLabel: View {
 
 struct SliderView: View {
     @Binding var sliderValue: Double
+    
     var body: some View {
         HStack {
             SliderLabel(text: "1")

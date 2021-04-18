@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RoundedImageViewStroked: View {
     var systemName: String
+    
     var body: some View {
         Image(systemName: systemName)
             .foregroundColor(Color("TextColor"))
@@ -20,6 +21,7 @@ struct RoundedImageViewStroked: View {
 
 struct RoundedImageViewFilled: View {
     var systemName: String
+    
     var body: some View {
         Image(systemName: systemName)
             .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
@@ -28,7 +30,6 @@ struct RoundedImageViewFilled: View {
             .background(
                 Circle().fill(Color("ButtonFilledBackgroundColor"))
             )
-
     }
 }
 
