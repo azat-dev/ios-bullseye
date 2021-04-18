@@ -15,6 +15,7 @@
 		AA336A5A2628B89400C0F338 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA336A592628B89400C0F338 /* Preview Assets.xcassets */; };
 		AAA107EF262C3E8500A28832 /* TextViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA107EE262C3E8500A28832 /* TextViews.swift */; };
 		AAA107F3262C4ED800A28832 /* RoundedViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA107F2262C4ED800A28832 /* RoundedViews.swift */; };
+		AAA107F7262C5AD000A28832 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAA107F6262C5AD000A28832 /* BackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		AA336A5B2628B89400C0F338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AAA107EE262C3E8500A28832 /* TextViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViews.swift; sourceTree = "<group>"; };
 		AAA107F2262C4ED800A28832 /* RoundedViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedViews.swift; sourceTree = "<group>"; };
+		AAA107F6262C5AD000A28832 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				AA336A542628B89400C0F338 /* ContentView.swift */,
+				AAA107F6262C5AD000A28832 /* BackgroundView.swift */,
 				AAA107F2262C4ED800A28832 /* RoundedViews.swift */,
 				AAA107EE262C3E8500A28832 /* TextViews.swift */,
 			);
@@ -241,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAA107F7262C5AD000A28832 /* BackgroundView.swift in Sources */,
 				AA336A552628B89400C0F338 /* ContentView.swift in Sources */,
 				AAA107EF262C3E8500A28832 /* TextViews.swift in Sources */,
 				AAA107F3262C4ED800A28832 /* RoundedViews.swift in Sources */,
