@@ -53,6 +53,7 @@ struct SliderLabel: View {
             .font(.body)
             .fontWeight(.bold)
             .foregroundColor(Color("TextColor"))
+            .frame(width: 35.0)
     }
 }
 
