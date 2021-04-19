@@ -18,7 +18,7 @@ struct BackgroundView: View {
             BottomView(game: $game)
         }
         .padding()
-        .background(Color("BackgroundColor").edgesIgnoringSafeArea(.all))
+        .background(RingsView())
     }
 }
 
@@ -94,14 +94,46 @@ struct RoundedTextView: View {
     }
 }
 
+struct RingsView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
+        ZStack {
+            Color("BackgroundColor").edgesIgnoringSafeArea(.all)
+            
+            ForEach(1..<6) { ring in
+                let size = CGFloat(100 * ring)
+                let opacity = (colorScheme == .dark) ? 0.1 : 0.3
+                
+                Circle()
+                    .strokeBorder(
+                        RadialGradient(gradient: Gradient(
+                            colors: [
+                                Color("BackgroundRingColor").opacity(opacity),
+                                Color("BackgroundRingColor").opacity(0)
+                            ]
+                        ),
+                        center: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/,
+                        startRadius: 100,
+                        endRadius: 300
+                        ),
+                        lineWidth: 20.0)
+                    .frame(width: size, height: size)
+                
+            }
+        }
+    }
+}
+
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
+        BackgroundView(game: .constant(Game()), sliderValue: .constant(50.0))
+        BackgroundView(game: .constant(Game()), sliderValue: .constant(50.0)).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        
         VStack(spacing: 10) {
             NumberViewLabel(text: "Label")
             RoundedTextView(text: "100")
             NumberView(title: "score", text: "999")
         }
-        
-        BackgroundView(game: .constant(Game()), sliderValue: .constant(50.0))
     }
 }
