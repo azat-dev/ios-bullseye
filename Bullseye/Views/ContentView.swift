@@ -9,17 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     @State var isAlertOpened = false
-    @State var currentValue = 50.0
+    @State var sliderValue = 50.0
     @State var game = Game()
     
     
     var body: some View {
         ZStack {
-            BackgroundView(game: $game).edgesIgnoringSafeArea(.all)
+            BackgroundView(game: $game, sliderValue:  $sliderValue).edgesIgnoringSafeArea(.all)
             VStack {
                 InstructionsView(game: $game)
-                SliderView(sliderValue: $currentValue)
-                HitmeButton(isAlertOpened: $isAlertOpened, game: $game, currentValue: $currentValue)
+                SliderView(sliderValue: $sliderValue)
+                HitmeButton(isAlertOpened: $isAlertOpened, game: $game, currentValue: $sliderValue)
             }.padding(20.0)
             
         }
