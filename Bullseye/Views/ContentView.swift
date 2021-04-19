@@ -15,14 +15,15 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            BackgroundView(game: $game, sliderValue:  $sliderValue).edgesIgnoringSafeArea(.all)
+            BackgroundView(game: $game, sliderValue:  $sliderValue)
             VStack {
                 InstructionsView(game: $game)
-                SliderView(sliderValue: $sliderValue)
+                    .padding(.bottom, 100.0)
                 HitmeButton(isAlertOpened: $isAlertOpened, game: $game, currentValue: $sliderValue)
             }.padding(20.0)
+            SliderView(sliderValue: $sliderValue)
             
-        }
+        }.edgesIgnoringSafeArea(.all)
     }
 }
 

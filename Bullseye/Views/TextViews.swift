@@ -37,11 +37,13 @@ struct InstructionsView: View {
     @Binding var game: Game
     
     var body: some View {
-        InstructionText(text: "🎯🎯🎯\nPut the Bullsyee as close as you can")
-            .padding(.leading, 30.0)
-            .padding(.trailing, 30.0)
-        
-        BigNumberText(text: "\(game.target)")
+        VStack {
+            InstructionText(text: "🎯🎯🎯\nPut the Bullsyee as close as you can")
+                .padding(.leading, 30.0)
+                .padding(.trailing, 30.0)
+            
+            BigNumberText(text: "\(game.target)")
+        }
     }
 }
 
