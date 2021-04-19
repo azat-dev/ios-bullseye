@@ -15,4 +15,10 @@ struct Game {
     func points(value: Int) -> Int {
         100 - abs(target - value)
     }
+    
+    mutating func startNewRound(points: Int) {
+        round += 1
+        score += points
+        target = Int.random(in: 1...100)
+    }
 }

@@ -64,13 +64,16 @@ struct HitmeButton: View {
             let value = currentValue.rounded()
             let earnedPoints = game.points(value: Int(value))
             
+            
             let valueText = "The slider's value is \(value)"
             let pointsText = "You've earned \(earnedPoints)"
             
             return Alert(
                 title: Text("Score"),
                 message: Text("\(valueText)\n\(pointsText)"),
-                dismissButton: .default(Text("Awesome!"))
+                dismissButton: .default(Text("Awesome!")) {
+                    game.startNewRound(points: earnedPoints)
+                }
             )
         })
     }
