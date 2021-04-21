@@ -18,10 +18,25 @@ struct ContentView: View {
             BackgroundView(game: $game, sliderValue:  $sliderValue)
             VStack {
                 InstructionsView(game: $game)
-                    .padding(.bottom, 100.0)
-                HitmeButton(isAlertOpened: $isAlertOpened, game: $game, currentValue: $sliderValue)
-            }.padding(20.0)
-            SliderView(sliderValue: $sliderValue)
+                    .padding(.bottom, isAlertOpened ? 0 : 100.0)
+                
+                if isAlertOpened {
+                    PointsView(
+                        isAlertOpened: $isAlertOpened,
+                        game: $game,
+                        sliderValue: $sliderValue
+                    )
+                } else {
+                    HitmeButton(isAlertOpened: $isAlertOpened, game: $game, currentValue: $sliderValue)
+                        .padding(20.0)
+                }
+
+            }
+            
+            if !isAlertOpened {
+                SliderView(sliderValue: $sliderValue)
+            }
+            
             
         }.edgesIgnoringSafeArea(.all)
     }

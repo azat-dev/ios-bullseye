@@ -12,7 +12,7 @@ struct InstructionText: View {
     
     var body: some View {
         Text(text.uppercased())
-            .bold()
+            .fontWeight(.bold)
             .kerning(2.0)
             .multilineTextAlignment(.center)
             .lineSpacing(4.0)
@@ -71,6 +71,32 @@ struct SliderView: View {
     }
 }
 
+struct ButtonTextView: View {
+    var body: some View {
+        Text("Start New Round")
+            .font(.headline)
+            .fontWeight(.bold)
+            .foregroundColor(Color.white)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color("AccentColor"))
+            .cornerRadius(12.0)
+    }
+}
+
+struct BodyTextView: View {
+    var points: Int
+    var body: some View {
+        Text("You scored \(points)\n🎉🎉🎉")
+            .font(.subheadline)
+            .fontWeight(.semibold)
+            .foregroundColor(Color("TextColor"))
+            .multilineTextAlignment(.center)
+            .lineSpacing(15)
+        
+    }
+}
+
 
 struct TextViews_Previews: PreviewProvider {
     static var previews: some View {
@@ -78,6 +104,8 @@ struct TextViews_Previews: PreviewProvider {
             InstructionText(text: "Instruction")
             BigNumberText(text: "77")
             SliderLabel(text: "100")
-        }
+            BodyTextView(points: 100)
+            ButtonTextView()
+        }.frame(width: .infinity)
     }
 }
