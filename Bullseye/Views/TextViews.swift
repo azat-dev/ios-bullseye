@@ -43,6 +43,7 @@ struct InstructionsView: View {
                 .padding(.trailing, 30.0)
             
             BigNumberText(text: "\(game.target)")
+                .transition(.scale)
         }
     }
 }

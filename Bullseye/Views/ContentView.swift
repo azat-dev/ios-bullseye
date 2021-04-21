@@ -19,6 +19,7 @@ struct ContentView: View {
             VStack {
                 InstructionsView(game: $game)
                     .padding(.bottom, isAlertOpened ? 0 : 100.0)
+                    .transition(.scale)
                 
                 if isAlertOpened {
                     PointsView(
@@ -26,15 +27,18 @@ struct ContentView: View {
                         game: $game,
                         sliderValue: $sliderValue
                     )
+                    .transition(.scale)
                 } else {
                     HitmeButton(isAlertOpened: $isAlertOpened, game: $game, currentValue: $sliderValue)
                         .padding(20.0)
+                        .transition(.scale)
                 }
 
             }
             
             if !isAlertOpened {
                 SliderView(sliderValue: $sliderValue)
+                    .transition(.scale)
             }
             
             
@@ -49,7 +53,9 @@ struct HitmeButton: View {
     
     var body: some View {
         Button(action: {
-            isAlertOpened = true
+            withAnimation {
+                isAlertOpened = true
+            }
         }) {
             Text("hit me".uppercased())
                 .fontWeight(.bold)
@@ -76,22 +82,6 @@ struct HitmeButton: View {
         })
         .cornerRadius(21.0)
         .overlay(RoundedRectangle(cornerRadius: 21).strokeBorder(Color.white, lineWidth: 2.0))
-        .alert(isPresented: $isAlertOpened, content: {
-            let value = currentValue.rounded()
-            let earnedPoints = game.points(value: Int(value))
-            
-            
-            let valueText = "The slider's value is \(value)"
-            let pointsText = "You've earned \(earnedPoints)"
-            
-            return Alert(
-                title: Text("Score"),
-                message: Text("\(valueText)\n\(pointsText)"),
-                dismissButton: .default(Text("Awesome!")) {
-                    game.startNewRound(points: earnedPoints)
-                }
-            )
-        })
     }
 }
 

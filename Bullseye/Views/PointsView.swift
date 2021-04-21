@@ -22,7 +22,10 @@ struct PointsView: View {
             BigNumberText(text: String(roundedValue))
             BodyTextView(points: points)
             Button(action: {
-                isAlertOpened = false;
+                withAnimation {
+                    isAlertOpened = false;
+                }
+                
                 game.startNewRound(points: points)
                 sliderValue = 50
             }, label: {
@@ -37,11 +40,12 @@ struct PointsView: View {
         .background(Color("BackgroundColor"))
         .cornerRadius(21.0)
         .shadow(radius: 21, x: 5, y: 5)
+        .transition(.scale)
     }
 }
 
 struct PointsView_Previews: PreviewProvider {
-    static var isAlertOpened = Binding.constant(false)
+    static var isAlertOpened = Binding.constant(true)
     static var game = Binding.constant(Game())
     static var sliderValue = Binding.constant(50.0)
     
