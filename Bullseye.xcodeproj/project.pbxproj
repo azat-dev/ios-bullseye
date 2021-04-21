@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA0207332630A059009039A2 /* PointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0207322630A059009039A2 /* PointsView.swift */; };
+		AA0207372630B51F009039A2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0207362630B51F009039A2 /* Constants.swift */; };
 		AA2ACF1C262AEF89009BD7B1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2ACF1B262AEF89009BD7B1 /* Game.swift */; };
 		AA2ACF25262AF753009BD7B1 /* BullseyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2ACF24262AF753009BD7B1 /* BullseyeTests.swift */; };
 		AA336A532628B89400C0F338 /* BullseyeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA336A522628B89400C0F338 /* BullseyeApp.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		AA0207322630A059009039A2 /* PointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsView.swift; sourceTree = "<group>"; };
+		AA0207362630B51F009039A2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AA2ACF1B262AEF89009BD7B1 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		AA2ACF22262AF753009BD7B1 /* BullseyeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BullseyeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA2ACF24262AF753009BD7B1 /* BullseyeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullseyeTests.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				AA2ACF1B262AEF89009BD7B1 /* Game.swift */,
+				AA0207362630B51F009039A2 /* Constants.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				AA0207332630A059009039A2 /* PointsView.swift in Sources */,
 				AA2ACF1C262AEF89009BD7B1 /* Game.swift in Sources */,
 				AA336A532628B89400C0F338 /* BullseyeApp.swift in Sources */,
+				AA0207372630B51F009039A2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

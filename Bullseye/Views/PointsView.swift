@@ -38,8 +38,8 @@ struct PointsView: View {
         .padding(.trailing, 20.0)
         .frame(maxWidth: 315)
         .background(Color("BackgroundColor"))
-        .cornerRadius(21.0)
-        .shadow(radius: 21, x: 5, y: 5)
+        .cornerRadius(Constants.General.rounRectCornerRadius)
+        .shadow(radius: Constants.General.rounRectCornerRadius, x: 5, y: 5)
         .transition(.scale)
     }
 }

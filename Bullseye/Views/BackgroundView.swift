@@ -85,11 +85,14 @@ struct RoundedTextView: View {
             .font(.title3)
             .kerning(-0.2)
             .fontWeight(.bold)
-            .frame(width: 68.0, height: 56.0)
+            .frame(width: Constants.General.roundRectViewWidth, height: Constants.General.roundRectViewHeight)
             .foregroundColor(Color("TextColor"))
             .background(
-                RoundedRectangle(cornerRadius: 21.0)
-                    .strokeBorder(Color("ButtonStrokeColor"), lineWidth: 2.0)
+                RoundedRectangle(cornerRadius: Constants.General.rounRectCornerRadius)
+                    .strokeBorder(
+                        Color("ButtonStrokeColor"),
+                        lineWidth: Constants.General.strokeWidth
+                    )
             )
     }
 }

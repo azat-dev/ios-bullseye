@@ -80,8 +80,9 @@ struct HitmeButton: View {
                 endPoint: .bottom
             )
         })
-        .cornerRadius(21.0)
-        .overlay(RoundedRectangle(cornerRadius: 21).strokeBorder(Color.white, lineWidth: 2.0))
+        .cornerRadius(Constants.General.rounRectCornerRadius)
+        .overlay(RoundedRectangle(cornerRadius: Constants.General.rounRectCornerRadius)
+                    .strokeBorder(Color.white, lineWidth: Constants.General.strokeWidth))
     }
 }
 
