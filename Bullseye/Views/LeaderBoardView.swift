@@ -34,8 +34,8 @@ struct LabelsView: View {
             Spacer()
                 .frame(width: Constants.General.roundedViewLength)
             Spacer()
-//            LabelTextView(text: "player".uppercased())
-//            Spacer()
+            //            LabelTextView(text: "player".uppercased())
+            //            Spacer()
             LabelTextView(text: "score".uppercased())
                 .frame(width: Constants.Leaderboard.leaderboardScoreColWidth)
             Spacer()
@@ -50,13 +50,27 @@ struct LabelsView: View {
 }
 
 struct HeaderView: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     var body: some View {
         ZStack {
-            HStack {
-                Spacer()
-                RoundedImageViewFilled(systemName: "xmark")
-            }.padding(.trailing)
-            BigBoldText(text: "Leaderboard".uppercased())
+            if verticalSizeClass == .regular && horizontalSizeClass == .compact {
+                HStack {
+                    BigBoldText(text: "Leaderboard".uppercased())
+                        .padding(.trailing)
+                    
+                    RoundedImageViewFilled(systemName: "xmark")
+                }
+            } else {
+                BigBoldText(text: "Leaderboard".uppercased())
+                HStack {
+                    Spacer()
+                    RoundedImageViewFilled(systemName: "xmark")
+                }.padding(.trailing)
+            }
+            
+            
         }
     }
 }
@@ -107,8 +121,8 @@ struct RowView: View {
         HStack {
             RoundTextView(text: String(index))
             Spacer()
-//            PlayerNameTextView(text: playerName)
-//            Spacer()
+            //            PlayerNameTextView(text: playerName)
+            //            Spacer()
             ScoreTextView(value: score)
                 .frame(width: Constants.Leaderboard.leaderboardScoreColWidth)
             Spacer()
