@@ -33,6 +33,18 @@ struct BigNumberText: View {
     }
 }
 
+struct BigBoldText: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .font(.title)
+            .fontWeight(.black)
+            .kerning(2.0)
+            .foregroundColor(Color("TextColor"))
+    }
+}
+
 struct InstructionsView: View {
     @Binding var game: Game
     
@@ -57,6 +69,18 @@ struct SliderLabel: View {
             .fontWeight(.bold)
             .foregroundColor(Color("TextColor"))
             .frame(width: 35.0)
+    }
+}
+
+struct LabelTextView: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .font(.caption)
+            .fontWeight(.bold)
+            .kerning(1.5)
+            .foregroundColor(Color("TextColor"))
     }
 }
 
@@ -107,6 +131,8 @@ struct TextViews_Previews: PreviewProvider {
             SliderLabel(text: "100")
             BodyTextView(points: 100)
             ButtonTextView()
+            BigBoldText(text: "Leaderboard")
+            LabelTextView(text: "score")
         }.frame(width: .infinity)
     }
 }

@@ -39,12 +39,33 @@ struct RoundedImageViewFilled: View {
     }
 }
 
+struct RoundTextView: View {
+    var text: String
+    
+    var body: some View {
+        Text(text)
+            .font(.title3)
+            .foregroundColor(Color("TextColor"))
+            .kerning(-0.2)
+            .fontWeight(.bold)
+            .frame(width: Constants.General.roundedViewLength, height: Constants.General.roundedViewLength)
+            .overlay(
+                Circle()
+                    .strokeBorder(
+                        Color("ButtonStrokeColor"),
+                        lineWidth: Constants.General.strokeWidth
+                    )
+            )
+    }
+}
+
 
 struct PreviewView: View {
     var body: some View {
         VStack(spacing: 10) {
             RoundedImageViewStroked(systemName: "arrow.clockwise")
             RoundedImageViewFilled(systemName: "list.dash")
+            RoundTextView(text: "62")
         }
     }
 }
