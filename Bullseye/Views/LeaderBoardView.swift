@@ -8,21 +8,31 @@
 import SwiftUI
 
 struct LeaderboardView: View {
+    @Binding var game: Game
+    @Binding var leaderboardIsShowing: Bool
+    
     var body: some View {
         ZStack {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 10) {
-                HeaderView()
+                HeaderView(leaderboardIsShowing: $leaderboardIsShowing)
+                    .padding(.top)
                 LabelsView()
-                RowView(
-                    index: 1,
-                    playerName: "Mike",
-                    score: 459,
-                    date: Date()
-                )
-            }
+                ScrollView {
+                    VStack(spacing: 10) {
+                        ForEach(game.leaderboardEntries.indices) { index in
+                            RowView(
+                                position: index + 1,
+                                score: game.leaderboardEntries[index].score,
+                                date: game.leaderboardEntries[index].date
+                            )
+                            
+                        }
+                    }
+                }
+            }.padding(.bottom)
         }
         
     }
@@ -50,6 +60,7 @@ struct LabelsView: View {
 }
 
 struct HeaderView: View {
+    @Binding var leaderboardIsShowing: Bool
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
@@ -60,13 +71,21 @@ struct HeaderView: View {
                     BigBoldText(text: "Leaderboard".uppercased())
                         .padding(.trailing)
                     
-                    RoundedImageViewFilled(systemName: "xmark")
+                    Button(action: {
+                        leaderboardIsShowing = false
+                    }) {
+                        RoundedImageViewFilled(systemName: "xmark")
+                    }
                 }
             } else {
                 BigBoldText(text: "Leaderboard".uppercased())
                 HStack {
                     Spacer()
-                    RoundedImageViewFilled(systemName: "xmark")
+                    Button(action: {
+                        leaderboardIsShowing = false
+                    }) {
+                        RoundedImageViewFilled(systemName: "xmark")
+                    }
                 }.padding(.trailing)
             }
             
@@ -112,17 +131,14 @@ struct DateTextView: View {
 }
 
 struct RowView: View {
-    let index: Int
-    let playerName: String
+    let position: Int
     let score: Int
     let date: Date
     
     var body: some View {
         HStack {
-            RoundTextView(text: String(index))
+            RoundTextView(text: String(position))
             Spacer()
-            //            PlayerNameTextView(text: playerName)
-            //            Spacer()
             ScoreTextView(value: score)
                 .frame(width: Constants.Leaderboard.leaderboardScoreColWidth)
             Spacer()
@@ -145,10 +161,19 @@ struct RowView: View {
 }
 
 struct LeaderboardView_Previews: PreviewProvider {
+    private static var leaderboardIsShowing = Binding.constant(false)
+    private static var game = Binding.constant(Game(loadTestData: true))
+    
     static var previews: some View {
-        LeaderboardView()
+        LeaderboardView(
+            game: game,
+            leaderboardIsShowing: leaderboardIsShowing
+        )
         
-        LeaderboardView()
-            .previewLayout(.fixed(width: 568, height: 320))
+        LeaderboardView(
+            game: game,
+            leaderboardIsShowing: leaderboardIsShowing
+        )
+        .previewLayout(.fixed(width: 568, height: 320))
     }
 }

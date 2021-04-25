@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State var isAlertOpened = false
     @State var sliderValue = 50.0
-    @State var game = Game()
+    @State var game = Game(loadTestData: false)
     
     
     var body: some View {

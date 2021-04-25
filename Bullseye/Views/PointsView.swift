@@ -46,7 +46,7 @@ struct PointsView: View {
 
 struct PointsView_Previews: PreviewProvider {
     static var isAlertOpened = Binding.constant(true)
-    static var game = Binding.constant(Game())
+    static var game = Binding.constant(Game(loadTestData: true))
     static var sliderValue = Binding.constant(50.0)
     
     static var previews: some View {

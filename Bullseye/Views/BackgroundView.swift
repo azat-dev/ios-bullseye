@@ -10,15 +10,26 @@ import SwiftUI
 struct BackgroundView: View {
     @Binding var game: Game
     @Binding var sliderValue: Double
+    @State var leaderboardIsShowing = false
     
     var body: some View {
         VStack {
-            TopView(game: $game, sliderValue: $sliderValue)
+            TopView(
+                game: $game,
+                sliderValue: $sliderValue,
+                leaderboardIsShowing: $leaderboardIsShowing
+            )
             Spacer()
             BottomView(game: $game)
         }
         .padding()
         .background(RingsView())
+        .sheet(isPresented: $leaderboardIsShowing, content: {
+            LeaderboardView(
+                game: $game,
+                leaderboardIsShowing: $leaderboardIsShowing
+            )
+        })
     }
 }
 
@@ -26,6 +37,7 @@ struct BackgroundView: View {
 struct TopView: View {
     @Binding var game: Game
     @Binding var sliderValue: Double
+    @Binding var leaderboardIsShowing: Bool
     
     var body: some View {
         HStack {
@@ -37,7 +49,11 @@ struct TopView: View {
                 RoundedImageViewFilled(systemName: "arrow.counterclockwise")
             }
             Spacer()
-            RoundedImageViewStroked(systemName: "list.dash")
+            Button(action:  {
+                leaderboardIsShowing.toggle()
+            }) {
+                RoundedImageViewStroked(systemName: "list.dash")
+            }
         }
     }
 }
@@ -130,8 +146,8 @@ struct RingsView: View {
 
 struct BackgroundView_Previews: PreviewProvider {
     static var previews: some View {
-        BackgroundView(game: .constant(Game()), sliderValue: .constant(50.0))
-        BackgroundView(game: .constant(Game()), sliderValue: .constant(50.0)).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+        BackgroundView(game: .constant(Game(loadTestData: true)), sliderValue: .constant(50.0))
+        BackgroundView(game: .constant(Game(loadTestData: true)), sliderValue: .constant(50.0)).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
         
         VStack(spacing: 10) {
             NumberViewLabel(text: "Label")
